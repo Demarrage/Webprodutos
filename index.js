@@ -5,17 +5,24 @@
 
 const express = require("express");
 const app = express();
+//O modulo bodyParser nos ajuda a capturar os dados que virão
+//no corpo de solicitação e realiza a sua converção para JSON.
+//Assim podemos manipular os dados.
+const bodyParser = require("body-parser");
 //vamos iniciar os exemplos de utilização de verbos HTTP
 //get
 //quando o meu usuario deseja obter algum dado do servidor
+
 app.get("/dados", (req, res) => {
   res.send("voce esta no verbo GET");
 });
 // POST
 //Utilizado quando o meu usuario envia algo para o servidor
 //com o intuito de cadastrar ou realizar autenticação
+//Vamos usar o bodyParser
+app.use(bodyParser.json());
 app.post("/dados", (req, res) => {
-  res.send("voce esta no verbo POST");
+  res.send(req.body);
 });
 
 //PUT
