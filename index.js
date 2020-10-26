@@ -10,11 +10,34 @@ const app = express();
 //Assim podemos manipular os dados.
 const bodyParser = require("body-parser");
 //vamos iniciar os exemplos de utilização de verbos HTTP
+var layout = [
+  {
+    header: "Loja BigBoom",
+    navegação: "listar,cadastrar,atualizar,deletar",
+    main: "pagina do corpo",
+    footer: "Av. Paula tras, 24, Vila Nova - São Paulo - SP",
+  },
+];
+
 //get
 //quando o meu usuario deseja obter algum dado do servidor
 
-app.get("/dados", (req, res) => {
-  res.send("voce esta no verbo GET");
+app.get("/listar", (req, res) => {
+  layout[0].main = [
+    {
+      nome: "calça",
+      descrição: "Jeans",
+      preco: "R$ 150",
+      imagem: "calça.jpg",
+    },
+    {
+      nome: "Blusa",
+      descrição: "preta",
+      preco: "R$ 50",
+      imagem: "blusa.jpg",
+    },
+  ];
+  res.send(layout);
 });
 // POST
 //Utilizado quando o meu usuario envia algo para o servidor
