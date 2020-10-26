@@ -29,3 +29,6 @@ app.put("/dados", (req, res) => {
 app.delete("/dados", (req, res) => {
   res.send("voce esta no verbo DELETE");
 });
+
+app.listen(4500);
+console.log("Servidor Online ...");
